@@ -298,28 +298,31 @@ define("tinymce/dom/Serializer", [
 
 				// Nodes needs to be attached to something in WebKit/Opera
 				// This fix will make DOM ranges and make Sizzle happy!
-				impl = node.ownerDocument.implementation;
-				if (impl.createHTMLDocument) {
-					// Create an empty HTML document
-					doc = impl.createHTMLDocument("");
-
-					// Add the element or it's children if it's a body element to the new document
-					each(node.nodeName == 'BODY' ? node.childNodes : [node], function(node) {
-						doc.body.appendChild(doc.importNode(node, true));
-					});
-
-					// Grab first child or body element for serialization
-					if (node.nodeName != 'BODY') {
-						node = doc.body.firstChild;
-					} else {
-						node = doc.body;
-					}
-
-					// set the new document in DOMUtils so createElement etc works
-					oldDoc = dom.doc;
-					dom.doc = doc;
+				if(Env.webkit || Env.opera)
+				{
+    				impl = node.ownerDocument.implementation;
+    				if (impl.createHTMLDocument) {
+    					// Create an empty HTML document
+    					doc = impl.createHTMLDocument("");
+    
+    					// Add the element or it's children if it's a body element to the new document
+    					each(node.nodeName == 'BODY' ? node.childNodes : [node], function(node) {
+    						doc.body.appendChild(doc.importNode(node, true));
+    					});
+    
+    					// Grab first child or body element for serialization
+    					if (node.nodeName != 'BODY') {
+    						node = doc.body.firstChild;
+    					} else {
+    						node = doc.body;
+    					}
+    
+    					// set the new document in DOMUtils so createElement etc works
+    					oldDoc = dom.doc;
+    					dom.doc = doc;
+    				}
 				}
-
+				
 				args = args || {};
 				args.format = args.format || 'html';
 
