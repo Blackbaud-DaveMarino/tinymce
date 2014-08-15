@@ -33,7 +33,7 @@ tinymce.PluginManager.add('anchor', function(editor) {
 		icon: 'anchor',
 		tooltip: 'Anchor',
 		onclick: showDialog,
-		stateSelector: 'a:not([href])'
+		stateSelector: 'a:not([href],[class*=etapDataTag])'
 	});
 
 	editor.addMenuItem('anchor', {

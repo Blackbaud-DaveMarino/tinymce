@@ -341,7 +341,7 @@ tinymce.PluginManager.add('image', function(editor) {
 			delete css.margin;
 			css['margin-top'] = css['margin-bottom'] = addPixelSuffix(data.vspace);
 			css['margin-left'] = css['margin-right'] = addPixelSuffix(data.hspace);
-			css['border-width'] = addPixelSuffix(data.border);
+			//css['border-width'] = addPixelSuffix(data.border);
 
 			win.find('#style').value(dom.serializeStyle(dom.parseStyle(dom.serializeStyle(css))));
 		}
@@ -391,8 +391,8 @@ tinymce.PluginManager.add('image', function(editor) {
 								},
 								items: [
 									{label: 'Vertical space', name: 'vspace'},
-									{label: 'Horizontal space', name: 'hspace'},
-									{label: 'Border', name: 'border'}
+									{label: 'Horizontal space', name: 'hspace'}
+									//{label: 'Border', name: 'border'}
 								]
 							}
 						]
