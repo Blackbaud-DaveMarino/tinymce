@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Youtube</title>
+  <style>
+    body { padding: 5px 15px 10px 15px; }
+  </style>
+</head>
+<body onload="document.getElementById('url').focus()">
+  <form onsubmit="Youtube.update();return false;" action="#">
+    <p>
+      <label><strong>Enter the Youtube Video's URL</strong></label><br/>
+      <input type="text" name="url" id="url" size="50" style="width:95%;"/>
+    </p>
+    <p><b>Don't know the URL?</b></p>
+    <ul>
+      <li>Go to <a href="http://www.youtube.com" target="_blank">www.youtube.com</a></li>
+      <li>Locate the video you want to post</li>
+      <li>Copy the URL just below the video's description</li>
+      <li>Paste the URL into this window's text box</li>
+    </ul>
+    <p><small style="color:#777;">Given the rigid dimensions of Youtube's video player, it may not fit entirely in 1 column of some layouts without overlapping.</small></p>
+  </form>
+
+  <div class="mceActionPanel">
+    <div style="float: left"><input type="button" id="insert" name="insert" value="Insert" /></div>
+    <div style="float: right"><input type="button" id="cancel" name="cancel" value="Cancel" /></div>
+  </div>
+
+  <script type="text/javascript" src="../../../jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="../../utils/etap.js"></script>
+  <script type="text/javascript" src="js/youtube.js"></script>
+  <script>
+      (function() {
+          jQuery("input#insert").on("click", function() { Youtube.update(); });
+          jQuery("input#cancel").on("click", function() { top.content.tinymce.activeEditor.windowManager.close(); });
+      })();
+  </script>
+</body>
+</html>

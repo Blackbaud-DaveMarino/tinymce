@@ -1,0 +1,138 @@
+form
+{
+  padding: 0px;
+  margin: 0px;
+}
+
+input, select 
+{
+    width: 50%;
+}
+
+select#align, select#sort, select#totals, select#generalQuestions, select#itemQuestions {
+    width: auto;
+}
+
+a, a img
+{
+  border:0px solid transparent;
+}
+
+.panel_wrapper
+{
+  height:310px;
+  overflow-y:scroll;
+}
+
+.fieldName
+{
+  border:1px solid #cfcfcf;
+  font-size: 11px;
+  width: 75%;
+  padding: 0px;
+  margin: 0px;
+}
+
+.heading
+{
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.description
+{
+  font-size: 11px;
+}
+
+.selectedWidget
+{
+  border: 1px solid #aaa;
+  background-color: #fefefe;
+}
+
+.hidden
+{
+  display:none;
+}
+
+.visible
+{
+  display:block;
+}
+
+.entryListColumns
+{
+  background-color:#efefef;
+  padding: 3px;
+  height: 85px;
+  overflow: auto;
+  padding: 2px;
+  border: 1px solid #777;
+}
+
+.etapEntryList, .etapPledgeSchedule, .etapAgapeGiftList,
+#etapEntryList, #etapPledgeSchedule, #etapAgapeGiftList
+{
+  text-align: left;
+  font-size: inherit !important;
+  font-family: inherit !important;
+  color: inherit !important;
+  font-weight: bold;
+  display: block;
+  width: 100%;
+  height: 50px;
+  background: #fff url("../img/giftlist.gif") repeat-x left top;
+  border: 1px solid #999;
+  padding-left: 2px;
+}
+
+.etapEcommerceDetails
+{
+  height: 221px;
+  background: #fff url("../img/ecommerceDetails.gif") no-repeat left top;
+  border: 1px solid #000;
+  padding-left: 2px;
+}
+
+.etapOrderDetails
+{
+  height: 513px;
+  background: #fff url("../img/orderDetails.jpg") no-repeat left top;
+  border: none;
+  padding: 2px 0;
+}
+
+.entryListColumn, .entryListEditColumn
+{
+  padding-left: 20px;
+  border: 1px solid transparent;
+}
+
+.entryListEditColumn
+{
+  border: 1px solid #aaa;
+  background: url("../img/triangle.gif") no-repeat left;  
+}
+
+.entryListReportOptions, .orderDetailsQuestionOptions
+{
+  background-color:#efefef;
+  padding: 3px;
+  margin-bottom: 5px;
+  border: 1px solid #777;
+}
+
+.entryListDetails
+{
+  background-color:#efefef;
+  padding: 3px;
+  margin-bottom: 5px;
+  border: 1px solid #777;
+}
+
+.orderDetailsQuestionOptions div
+{
+  padding: 2px 0;
+}
+
+#options_panel { padding: 15px; }

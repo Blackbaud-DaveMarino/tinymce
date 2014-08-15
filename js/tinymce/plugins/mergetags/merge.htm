@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>eTapestry Merge Values</title>
+        <link rel="stylesheet" href="css/content.css" />
+        <link rel="stylesheet" href="../../plugin.css" />
+        <link rel="stylesheet" type="text/css" href="../../skins/lightgray/skin.min.css" />
+    </head>
+    <body onload="focusSearch();">
+      <div id="mergeTagsWrapper" class="mce-panel mce-first mce-last" style="display: none;">
+        <div class="mce-tabs tabs">
+              <div id="field_tab" class="mce-tab mce-active" tab="field">{{fields}}</div>
+              <div id="options_tab" class="mce-tab" tab="options">{{options}}</div>
+              <div id="search_tab" class="mce-tab" tab="search">{{search}}</div>
+        </div>
+        <div class="panel_wrapper">
+          <form onsubmit="MergeTagDialog.update();return false;" action="#">
+            <div id="field_panel" class="panel">
+              <div class="editorRow">
+                <label for="category">{{category}}</label>
+                <select class="mce-btn" name="category" id="category"></select>
+              </div>
+              <div class="editorRow">
+                <label for="field">{{field}}</label>
+                <select class="mce-btn" name="field" id="field"></select>
+              </div>
+            </div>
+    
+            <div id="options_panel" class="panel" style="display: none;">
+              <div class="editorRow">
+                <label for="aggregate">{{aggregate}}</label>
+                <select class="mce-btn" name="aggregate" id="aggregate">
+                  <option value="0">{{none}}</option>
+                  <option value="1">{{sum}}</option>
+                  <option value="2">{{avg}}</option>
+                  <option value="3">{{min}}</option>
+                  <option value="4">{{max}}</option>
+                  <option value="5">{{yearToDate}}</option>
+                  <option value="6">{{oneYearAgo}}</option>
+                  <option value="7">{{twoYearAgo}}</option>
+                  <option value="8">{{threeYearAgo}}</option>
+                  <option value="9">{{fourYearAgo}}</option>
+                  <option value="10">{{fiveYearAgo}}</option>
+                  <option value="11">{{fiscalYearToDate}}</option>
+                  <option value="12">{{fiscalOneYearAgo}}</option>
+                  <option value="13">{{fiscalTwoYearAgo}}</option>
+                  <option value="14">{{fiscalThreeYearAgo}}</option>
+                  <option value="15">{{fiscalFourYearAgo}}</option>
+                  <option value="16">{{fiscalFiveYearAgo}}</option>
+                  <option value="17">{{first}}</option>
+                  <option value="18">{{second}}</option>
+                  <option value="19">{{third}}</option>
+                  <option value="20">{{fourth}}</option>
+                  <option value="21">{{fifth}}</option>
+                  <option value="22">{{last}}</option>
+                </select>
+              </div>
+    
+              <div class="editorRow">
+                <label for="format" >{{format}}</label>
+                <select class="mce-btn" name="format" id="format">
+                  <option value="0">Text</option>
+                  <option value="1">Long Date</option>
+                  <option value="2">Number</option>
+                  <option value="3">Something Else</option>
+                </select>
+              </div>
+              
+              <div class="editorRow">
+                <label for="defaultValue">{{defaultValue}}</label>
+                <input type="text" class="mce-textbox" name="defaultValue" id="defaultValue" size="30"/>
+              </div>
+            </div>
+    
+            <div id="search_panel" class="panel editorRow" style="display: none;">
+              <div id="searchResults"><i>{{no_results_found}}</i></div>
+            </div>
+          </form>
+        </div>
+    
+        <div id="searchRow" class="editorRow" style="padding-top:5px;">
+          <label class="mce-label" for="searchBox">{{search}}</label>
+          <input type="text" id="searchBox" class="mce-textbox" name="searchBox" size="37"/>
+          <div class="mce-btn mce-widget"><button id="searchSubmit" name="searchSubmit">{{search}}</button></div>
+        </div>
+    
+        <div id="actionsPanel" class="mce-panel">
+          <div style="float: right" class="mce-widget mce-btn"><button id="cancel" name="cancel">{{cancel}}</button></div>
+          <div style="float: right" class="mce-widget mce-btn mce-primary"><button id="insert" name="insert">{{insert}}</button></div>
+        </div>
+    
+      </div>
+
+      <script type="text/javascript" src="../../../jquery-1.10.2.min.js"></script>
+      <script type="text/javascript" src="../../../handlebars-v1.3.0.js"></script>
+      <script type="text/javascript" src="../../../underscore-min.js"></script>
+      <script type="text/javascript" src="../../utils/etap.js"></script>
+      <script type="text/javascript" src="js/mergetags.js"></script>
+      <script>
+        function focusSearch()
+        {
+            try { document.getElementById('searchBox').focus(); } catch(e) {}
+        }
+        
+        (function() {
+            var searchThree = top.content.tinymce.i18n.translate('search_three_chars');
+            var noResults = top.content.tinymce.i18n.translate('no_results_found');
+           
+            jQuery("button#insert").on("click", function() { MergeTagDialog.update(); });
+            jQuery("button#cancel").on("click", function() { top.content.tinymce.activeEditor.windowManager.close(); });
+            jQuery("button#searchSubmit").on("click", function() { doFieldSearch(searchThree, noResults); });
+            
+            jQuery("select#category").on("change", function() 
+            { 
+                populateFields('category', 'field', MergeTagDialog.data);
+                populateFormatters('field', 'format', MergeTagDialog.data, MergeTagDialog.formatters); 
+            });
+            
+            jQuery("select#field").on("change", function() 
+            { 
+                populateFormatters('field', 'format', MergeTagDialog.data, MergeTagDialog.formatters); 
+            });
+            
+            jQuery("select#insert").on("click", function() 
+            { 
+                populateFormatters('field', 'format', MergeTagDialog.data, MergeTagDialog.formatters);
+            });
+            
+            jQuery(".mce-tab").on("click", function(e) { MergeTagDialog.selectTab(jQuery(e.target).attr("tab")); });
+            
+        })();
+        
+      </script>
+    </body>
+</html>

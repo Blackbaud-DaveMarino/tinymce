@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>{{title}}</title>
+    <link rel="stylesheet" href="css/content.css" type="text/css"></link>
+    <link rel="stylesheet" href="../../plugin.css" />
+    <link rel="stylesheet" type="text/css" href="../../skins/lightgray/skin.min.css" />
+</head>
+<body>
+  <div id="letterWidgetWrapper" class="mce-panel mce-first mce-last" style="display:none">
+    <div class="mce-tabs tabs">
+          <div id="select_tab" class="mce-tab mce-active" tab="select">{{select}}</div>
+          <div id="options_tab" class="mce-tab" tab="options">{{options}}</div>
+      </div>
+      <div class="panel_wrapper">
+        <div id="select_panel" class="panel current">
+            <table cellpadding="2" cellspacing="0">
+
+            <tr><td colspan="2"><hr/></td></tr>
+
+            <tr>
+              <td width="75"><div class="mce-widget mce-btn"><button class="widgetSelector" id="entryList">Select</button></div></td>
+              <td width="*" id="entryListArea">
+                <div class="heading">{{entryList}}</div>
+                <div class="description">{{entryListDesc}}</div>
+              </td>
+            </tr>
+
+            <tr><td colspan="2"><hr/></td></tr>
+
+            <tr>
+              <td><div class="mce-widget mce-btn"><button class="widgetSelector" id="pledgeSchedule"/>Select</button></div></td>
+              <td id="pledgeScheduleArea">
+                <div class="heading">{{pledgeSchedule}}</div>
+                <div class="description">{{pledgeScheduleDesc}}</div>
+              </td>
+            </tr>
+
+            <tr><td colspan="2"><hr/></td></tr>
+
+            <tr id="agapeGiftListSelection" style="display:none">
+              <td><div class="mce-widget mce-btn"><button class="widgetSelector" id="agapeGiftList"/>Select</button></div></td>
+              <td id="agapeGiftListArea">
+                <div class="heading">{{agapeGiftList}}</div>
+                <div class="description">{{agapeGiftListDesc}}</div>
+              </td>
+            </tr>
+
+            <tr id="agapeGiftListSelectionSeparator" style="display:none"><td colspan="2"><hr/></td></div></tr>
+            
+            <tr>
+              <td><div class="mce-widget mce-btn"><button class="widgetSelector" id="orderDetails">Select</button></div></td>
+              <td id="orderDetailsArea">
+                <div class="heading">{{orderDetails}}</div>
+                <div class="description">{{orderDetailsDesc}}</div>
+              </td>
+            </tr>
+            <tr><td colspan="2"><hr/></td></tr>
+            
+            <tr>
+              <td><div class="mce-widget mce-btn"><button class="widgetSelector" id="ecommerceDetails">Select</button></div></td>
+              <td id="ecommerceDetailsArea">
+                <div class="heading">{{ecommerceDetails}}</div>
+                <div class="description">{{ecommerceDetailsDesc}}</div>
+              </td>
+            </tr>
+
+            <tr><td colspan="2"><hr/></td></tr>
+
+            <tr id="accountPhotoSelection">
+              <td><div class="mce-widget mce-btn"><button class="widgetSelector" id="accountPhoto">Select</button></div></td>
+              <td id="accountPhotoArea">
+                <div class="heading">{{accountPhoto}}</div>
+                <div class="description">{{accountPhotoDesc}}</div>
+              </td>
+            </tr>
+
+            <tr id="accountPhotoSelectionSeparator"><td colspan="2"><hr/></td></tr>
+
+            <tr>
+              <td><div class="mce-widget mce-btn"><button class="widgetSelector" id="donorLoyaltyLink">Select</button></div></td>
+              <td id="donorLoyaltyLinkArea">
+                <div class="heading">{{donorLoyaltyLink}}</div>
+                <div class="description">{{donorLoyaltyLinkDesc}}</div>
+              </td>
+            </tr>
+
+            <tr><td colspan="2"><hr/></td></tr>
+
+            </table>
+        </div>
+
+        <div id="options_panel" class="panel">
+          <div id="noneSelectedOptions"><p>No widget selected</p></div>
+          
+          <div id="entryListOptions" class="hidden">
+            <div id="entryListReportOptions" class="entryListReportOptions">
+              <div>Show totals: 
+                <select id="totals"><option value="false">No</option><option value="true">Yes</option></select>
+              </div>
+            </div>
+
+            <div id="entryListColumns" class="entryListColumns">
+            </div>
+
+            <div style="padding-left: 20px;">
+              <a href="javascript:EntryList.add();">{{addAnotherColumn}}</a>
+            </div>
+
+            <br/>
+
+            <div class="entryListDetails">
+              <table cellpadding="0" cellspacing="3" width="98%">
+
+              <tr>
+                <td colspan="2">
+                  <div>{{category}} / {{field}}</div>
+                  <div style="padding-bottom:2px;"><select id="category"></select></div>
+                  <div><select id="field"></select></div>
+              </tr>
+
+              <tr><td colspan="2">&nbsp;</td></tr>
+
+              <tr>
+                <td>{{display}}</td>
+                <td><input type="text" id="displayName" value="Date" size="40" /></td>
+              </tr>
+
+              <tr>
+                <td>{{format}}</td>
+                <td><select id="format"></select></td>
+              </tr>
+
+              <tr>
+                <td>{{aggregate}}</td>
+                <td>
+                  <select id="aggregate">
+                    <option value="0">{{none}}</option>
+                    <option value="1">{{sum}}</option>
+                    <option value="2">{{avg}}</option>
+                    <option value="3">{{min}}</option>
+                    <option value="4">{{max}}</option>
+                    <option value="5">{{yearToDate}}</option>
+                    <option value="6">{{oneYearAgo}}</option>
+                    <option value="7">{{twoYearAgo}}</option>
+                    <option value="8">{{threeYearAgo}}</option>
+                    <option value="9">{{fourYearAgo}}</option>
+                    <option value="10">{{fiveYearAgo}}</option>
+                    <option value="11">{{fiscalYearToDate}}</option>
+                    <option value="12">{{fiscalOneYearAgo}}</option>
+                    <option value="13">{{fiscalTwoYearAgo}}</option>
+                    <option value="14">{{fiscalThreeYearAgo}}</option>
+                    <option value="15">{{fiscalFourYearAgo}}</option>
+                    <option value="16">{{fiscalFiveYearAgo}}</option>
+                    <option value="17">{{first}}</option>
+                    <option value="18">{{second}}</option>
+                    <option value="19">{{third}}</option>
+                    <option value="20">{{fourth}}</option>
+                    <option value="21">{{fifth}}</option>
+                    <option value="22">{{last}}</option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td>{{sort}}</td>
+                <td>
+                  <select id="sort">
+                    <option value="0">{{no}}</option>
+                    <option value="1">{{ascending}}</option>
+                    <option value="2">{{descending}}</option>
+                  </select>
+
+                  &nbsp; &nbsp; &nbsp; &nbsp;
+                  {{align}}
+                  <select id="align">
+                    <option value="enum.align.auto">{{auto}}</option>
+                    <option value="enum.align.left">{{left}}</option>
+                    <option value="enum.align.right">{{right}}</option>
+                    <option value="enum.align.center">{{center}}</option>
+                  </select>
+                </td>
+              </tr>
+
+              </table>
+
+            </div>
+
+          </div>  <!-- close gift list options tab -->
+
+          <div id="pledgeScheduleOptions" class="hidden">
+            <div>{{noOptionsWarning}}</div>
+            <div>{{pledgeScheduleInsert}}</div>
+          </div>
+
+          <div id="agapeGiftListOptions" class="hidden">
+            <div>{{noOptionsWarning}}</div>
+            <div>{{agapeGiftListInsert}}</div>
+          </div>
+          
+          <div id="orderDetailsOptions" class="hidden">
+            <div class="orderDetailsQuestionOptions">
+              <div>Include General Checkout Question Responses:
+                <select id="generalQuestions">
+                    <option value="false">No</option>
+                    <option value="true">Yes</option>
+                </select>
+              </div>
+              <div>Include Item Checkout Question Responses:
+                <select id="itemQuestions">
+                    <option value="false">No</option>
+                    <option value="true">Yes</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          
+          <div id="ecommerceDetailsOptions" class="hidden">
+            <div>{{noOptionsWarning}}</div>
+            <div>{{ecommerceDetailsInsert}}</div>
+          </div>
+
+          <div id="accountPhotoOptions" class="hidden">
+            <div>{{noOptionsWarning}}</div>
+            <div>{{accountPhotoInsert}}</div>
+          </div>
+
+          <div id="donorLoyaltyLinkOptions" class="hidden">
+            <div>{{textToDisplayInLink}}</div>
+            <td><input type="text" id="donorLoyaltyLinkName" value="Click Here" size="60"/></td>
+          </div>
+
+        </div>
+        <div id="actionsPanel" class="mce-panel">
+          <div style="float: right" class="mce-widget mce-btn"><button id="cancel" name="cancel">{{cancel}}</button></div>
+          <div style="float: right" class="mce-widget mce-btn mce-primary"><button id="insert" name="insert">{{insert}}</button></div>
+        </div>
+      </div>
+
+    
+  </div>
+  <script type="text/javascript" src="../../../jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="../../../handlebars-v1.3.0.js"></script>
+  <script type="text/javascript" src="../../../underscore-min.js"></script>
+  <script type="text/javascript" src="../../utils/etap.js"></script>
+  <script type="text/javascript" src="js/widget.js"></script>
+  <script>
+        (function() {
+            var template = Handlebars.compile(jQuery("#letterWidgetWrapper").html());
+            jQuery("#letterWidgetWrapper").html(template(top.content.tinymce.i18n.data)).show();
+            
+            jQuery("button.widgetSelector").on("click", function(e) { WidgetDialog.selectWidget(e.target.id); });
+           
+            jQuery("button#insert").on("click", function() { WidgetDialog.update(); });
+            jQuery("button#cancel").on("click", function() { top.content.tinymce.activeEditor.windowManager.close(); });
+            jQuery("input#displayName").on("change", function() { EntryList.update(); });
+            jQuery("select#sort").on("change", function() { EntryList.update(); });
+            jQuery("select#align").on("change", function() { EntryList.update(); });
+            jQuery("select#aggregate").on("change", function() { EntryList.update(); });
+            jQuery("select#format").on("change", function() { EntryList.update(); });
+            
+            jQuery("select#field").on("change", function() 
+            { 
+                EntryList.refreshName();
+                populateFormatters('field', 'format', WidgetDialog.data, WidgetDialog.formatters);
+                EntryList.update();
+            });
+            
+            jQuery("select#category").on("change", function() 
+            { 
+                populateFields('category', 'field', WidgetDialog.data);
+                populateFormatters('field', 'format', WidgetDialog.data, WidgetDialog.formatters);
+                EntryList.update();
+                EntryList.refreshName();
+            });
+                        
+            jQuery(".tabs .mce-tab").on("click", function(e) { WidgetDialog.selectTab(jQuery(e.target).attr("tab")); });
+        })();
+  </script>
+
+</body>
+</html>
