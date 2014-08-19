@@ -230,7 +230,7 @@ define("tinymce/EditorCommands", [
 				listElm = dom.getParent(selection.getNode(), 'ol,ul');
 				if (listElm) {
 					listParent = listElm.parentNode;
-
+					jQuery(listParent).find("br[type=_moz]").unwrap().remove();
 					// If list is within a text block then split that block
 					if (/^(H[1-6]|P|ADDRESS|PRE)$/.test(listParent.nodeName)) {
 						storeSelection();
