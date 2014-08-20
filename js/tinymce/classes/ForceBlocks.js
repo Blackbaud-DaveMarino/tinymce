@@ -75,7 +75,7 @@ define("tinymce/ForceBlocks", [], function() {
 				if (((node.nodeType === 3 || (node.nodeType == 1 && !blockElements[node.nodeName]))) &&
 					schema.isValidChild(rootNodeName, forcedRootBlock.toLowerCase())) {
 					// Remove empty text nodes
-					if (node.nodeType === 3 && node.nodeValue.length === 0) {
+					if (node.nodeType === 3 && (node.nodeValue.length === 0 || node.textContent === "\n")) {
 						tempNode = node;
 						node = node.nextSibling;
 						dom.remove(tempNode);
