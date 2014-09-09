@@ -170,7 +170,7 @@ define("tinymce/util/Quirks", [
 						if (oldValue) {
 							record.target.setAttribute("style", oldValue);
 						} else {
-							record.target.removeAttribute("style");
+							//record.target.removeAttribute("style");
 						}
 					}
 
@@ -184,7 +184,7 @@ define("tinymce/util/Quirks", [
 								container = node.firstChild;
 							}
 
-							dom.remove(node, true);
+							//dom.remove(node, true);
 
 							if (container) {
 								rng.setStart(container, offset);
