@@ -425,6 +425,21 @@ tinymce.PluginManager.add('image', function(editor) {
 		context: 'insert',
 		prependToContext: true
 	});
+	
+	function isImage(n) {
+        var isImage = n && (n.nodeName === 'IMG') && (n.src.indexOf("img/youtube-player.png") === -1);
+        return isImage;
+    }
+    
+    // open if you double click on a node
+    editor.on("dblClick", function(e) {
+          if( isImage(e.target) )
+          {
+              editor.selection.select(e.target);
+              createImageList(showDialog)();
+          }
+              
+    });
 
 	editor.addCommand('mceImage', createImageList(showDialog));
 });
