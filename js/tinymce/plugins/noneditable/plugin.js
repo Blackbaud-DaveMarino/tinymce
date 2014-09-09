@@ -342,9 +342,9 @@ tinymce.PluginManager.add('noneditable', function(editor) {
 					}
 
 					// Check if previous or next tree node is non editable then block the event
-					if (isNextPrevTreeNodeNonEditable()) {
-						return false;
-					}
+					//if (isNextPrevTreeNodeNonEditable()) {
+					//	return false;
+					//}
 				}
 
 				return true;
