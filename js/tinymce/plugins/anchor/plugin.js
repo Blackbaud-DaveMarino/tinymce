@@ -22,9 +22,18 @@ tinymce.PluginManager.add('anchor', function(editor) {
 			title: 'Anchor',
 			body: {type: 'textbox', name: 'name', size: 40, label: 'Name', value: name},
 			onsubmit: function(e) {
-				editor.execCommand('mceInsertContent', false, editor.dom.createHTML('a', {
-					id: e.data.name
-				}));
+				
+				if (!e.data.name || !/^[A-z][A-z0-9\-\_:\.]*$/i.test(e.data.name)) {
+		            alert(Etap.Utils.getMessage("msg.error.badAnchor"));
+		            return;
+		        }
+			    else
+			    {
+			        editor.execCommand('mceInsertContent', false, editor.dom.createHTML('a', {
+	                    name: e.data.name,
+	                    target: "_blank"
+	                }));
+			    }
 			}
 		});
 	}

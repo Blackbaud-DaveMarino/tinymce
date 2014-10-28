@@ -48,6 +48,9 @@ tinymce.PluginManager.add('preview', function(editor) {
 
 				var dirAttr = editor.settings.directionality ? ' dir="' + editor.settings.directionality + '"' : '';
 
+				var content = jQuery(editor.getContent());
+				content.find("a").attr("href", "javascript:void(0)");
+
 				previewHtml = (
 					'<!DOCTYPE html>' +
 					'<html>' +
@@ -55,7 +58,7 @@ tinymce.PluginManager.add('preview', function(editor) {
 						headHtml +
 					'</head>' +
 					'<body id="' + bodyId + '" class="mce-content-body ' + bodyClass + '"' + dirAttr + '>' +
-						editor.getContent() +
+						content.html() +
 					'</body>' +
 					'</html>'
 				);
