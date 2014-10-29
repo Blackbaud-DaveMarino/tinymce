@@ -686,7 +686,11 @@ define("tinymce/dom/DOMUtils", [
 		 * tinymce.DOM.setStyles('mydiv', {'background-color': 'red', 'color': 'green'});
 		 */
 		setStyles: function(elm, styles) {
-			this.$$(elm).css(styles);
+			elm = this.$$(elm).css(styles);
+
+			if (this.settings.update_styles) {
+				elm.attr('data-mce-style', null);
+			}
 		},
 
 		/**
@@ -954,6 +958,8 @@ define("tinymce/dom/DOMUtils", [
 
 			each(url.split(','), function(url) {
 				var link;
+
+				url = Tools._addCacheSuffix(url);
 
 				if (self.files[url]) {
 					return;
@@ -1415,7 +1421,7 @@ define("tinymce/dom/DOMUtils", [
 			node = node.firstChild;
 			if (node) {
 				walker = new TreeWalker(node, node.parentNode);
-				elements = elements || self.schema ? self.schema.getNonEmptyElements() : null;
+				elements = elements || (self.schema ? self.schema.getNonEmptyElements() : null);
 
 				do {
 					type = node.nodeType;
